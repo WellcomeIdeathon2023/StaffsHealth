@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% from 'bootstrap/form.html' import render_form %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<p> List of all tags: </p>
+
+{% for tag in tagset %}
+   <a class="participant-tag" href = "{{tag}}">{{ tag }}</a>
+{% endfor %}
+
+{% endblock %}

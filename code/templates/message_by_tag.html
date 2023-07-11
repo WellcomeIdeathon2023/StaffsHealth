@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% from 'bootstrap/form.html' import render_form %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<p> This is the page for users tagged as: {{ tag }} </p>
+
+<hr>
+<h2> Register message to all </h2>
+
+{{ wtf.quick_form(add_contact_form) }}
+
+<hr>
+{% endblock %}

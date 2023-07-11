@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% from 'bootstrap/form.html' import render_form %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block html_head %}
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+  <link type="text/css" rel="stylesheet"
+      href="{{ url_for('static', filename='register.css')}}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+
+{% block content %}
+
+<h1> Participant {{name}} </h1>
+
+<hr>
+<p> ID: {{ participant.id }}<p></p>
+<p>Name: {{ participant.name }}</p>
+<p>Contact method: {{ participant.contact_method }}</p>
+<hr>
+
+<h2> Tags: </h2>
+<div class="participant-tag-set">
+{% for tag in tags %}
+   <a class="participant-tag" href = "/send_to_tag/{{tag}}">{{ tag }}</a>
+{% endfor %}
+</div>
+
+{{ render_form(form) }}
+
+<h2> Schedule a contact: </h2>
+
+{{ wtf.quick_form(add_contact_form) }}
+
+<h2> Contact history: </h2>
+
+<div class="tbl">
+{% for table in contacts_tables %}
+            {{contacts_titles[loop.index]}}
+            {{ table | safe}}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#datepick').datetimepicker();
+    });
+  </script>
+{% endblock %}

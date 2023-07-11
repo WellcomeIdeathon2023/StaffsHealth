@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<p> The CRM will go here. </p>
+
+<div class="tbl">
+{% for table in tables %}
+    {{titles[loop.index]}}
+    {{ table | safe}}
+{% endfor %}
+</div>
+
+{% endblock %}

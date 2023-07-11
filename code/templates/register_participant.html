@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block html_head %}
+
+  <style type="text/css">
+    .important {
+      color: #336699;
+    }
+  </style>
+  <link type="text/css" rel="stylesheet"
+      href="{{ url_for('static', filename='register.css')}}" />
+{% endblock %}
+
+{% block content %}
+
+<h1>Register</h1>
+<p>Please fill in this form to add a new participant.</p>
+<hr>
+{{ render_form(form) }}
+
+<p> {{ message }} </p>
+<hr>
+
+
+{% endblock %}

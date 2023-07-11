@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link type="text/css" rel="stylesheet"
+    href="{{ url_for('static', filename='table_styles.css')}}" />
+  <link type="text/css" rel="stylesheet"
+      href="{{ url_for('static', filename='style.css')}}" />
+  {% block html_head %}{% endblock %}
+  <title>{% block title %}{% endblock %} - My Webpage</title>
+</head>
+
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li class=flash-li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <div class="sidebar">
+    <a class="home" href="/">Home</a>
+    <a href="/crm">Participant List</a>
+    <a href="/register_participant">Register Participant</a>
+    <a href="/send_to_tag">Schedule messages by tag</a>
+    <a href="/unanswered_messages"> Messages with no response</a>
+
+
+  </div>
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+
+<scripts>
+  {% block scripts %}{% endblock %}
+</scripts>
